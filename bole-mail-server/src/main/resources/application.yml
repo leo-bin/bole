@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+spring:
+  mail:
+    host: smtp.163.com
+    protocol: smtp
+    default-encoding: UTF-8
+    password:
+    username: leo_bins@163.com
+    port: 587
+    properties:
+      mail:
+        stmp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: ture
+  rabbitmq:
+    username: guest
+    password: guest
+    host: 127.0.0.1
+    port: 5672
+    listener:
+      simple:
+        acknowledge-mode: manual
+        prefetch: 100
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0

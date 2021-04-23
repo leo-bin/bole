@@ -1,0 +1,3 @@
+# Project exclude paths
+/bole-server/bole-api/target/
+/bole-server/bole-common/target/

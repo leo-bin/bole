@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="bole-service" />
+        <module name="bole-common" />
+        <module name="bole-api" />
+        <module name="bole-dao" />
+        <module name="bole-domain" />
+        <module name="bole-mail-server" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bole-api" options="-parameters" />
+      <module name="bole-common" options="-parameters" />
+      <module name="bole-dao" options="-parameters" />
+      <module name="bole-domain" options="-parameters" />
+      <module name="bole-mail-server" options="-parameters" />
+      <module name="bole-service" options="-parameters" />
+    </option>
+  </component>
+</project>
