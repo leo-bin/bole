@@ -14,7 +14,7 @@ spring:
       max-request-size: 500MB
   rabbitmq:
     username: guest
-    password: gues8
+    password: guest
     host: 127.0.0.1
     publisher-confirms: true
     publisher-returns: true
