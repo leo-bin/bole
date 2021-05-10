@@ -21,6 +21,12 @@
             <groupId>com.bin</groupId>
             <artifactId>bole-service</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.bin</groupId>
+            <artifactId>bole-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

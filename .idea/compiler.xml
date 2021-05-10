@@ -7,12 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bole-service" />
-        <module name="bole-common" />
         <module name="bole-api" />
+        <module name="bole-common" />
         <module name="bole-dao" />
         <module name="bole-domain" />
         <module name="bole-mail-server" />
+        <module name="bole-service" />
       </profile>
     </annotationProcessing>
   </component>

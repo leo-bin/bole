@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bole-mail-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bole-mail-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bole-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bole-server/bole-api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bole-server/bole-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bole-server/bole-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bole-server/bole-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bole-server/bole-common/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bole-server/bole-dao/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bole-server/bole-dao/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bole-server/bole-domain/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bole-server/bole-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bole-server/bole-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bole-server/bole-domain" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bole-server/bole-service" charset="UTF-8" />
   </component>
 </project>
