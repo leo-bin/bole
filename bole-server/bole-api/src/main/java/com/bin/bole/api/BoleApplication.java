@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableCaching
 @EnableScheduling
 @MapperScan(basePackages = "com.bin.bole.dao")
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.bin.bole")
 public class BoleApplication {
 
     public static void main(String[] args) {

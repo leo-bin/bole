@@ -1,11 +1,16 @@
 package com.bin.bole.common.exception;
 
 import com.bin.bole.common.result.Result;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.sql.SQLException;
+
+import static com.bin.bole.common.result.ResultEnum.SQL_ERROR;
 
 /**
  * @author binLi
@@ -25,6 +30,10 @@ public class GlobalExceptionHandler {
             GlobalException global = (GlobalException) e;
             LOG.error("【异常】：", global);
             return Result.error(global.getCode(), global.getMessage());
+        } else if (e instanceof SQLException) {
+            SQLException sqlException = (SQLException) e;
+            LOG.error("【异常】：", sqlException);
+            return Result.error(SQL_ERROR.getCode(), SQL_ERROR.getMsg());
         } else {
             LOG.error("【未知异常】：", e);
             return Result.error(-1, e.getMessage());

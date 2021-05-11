@@ -25,7 +25,7 @@ spring:
         acknowledge-mode: manual
         prefetch: 100
   redis:
-    host: 127.0.0.1
+    host: 47.100.170.169
     port: 6379
-    password:
+    password: 115118
     database: 0

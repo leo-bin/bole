@@ -1,19 +1,19 @@
 package com.bin.bole.mailserver.queue;
 
 
-import com.bin.bole.common.consts.MailConst;
+import com.bin.bole.mailserver.consts.MailConst;
 import com.rabbitmq.client.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 
-import javax.annotation.Resource;
 
 /**
  * @author binLi
@@ -25,13 +25,13 @@ public class WelcomeMailServer {
 
     public static final Logger logger = LoggerFactory.getLogger(WelcomeMailServer.class);
 
-    @Resource
+    @Autowired
     JavaMailSender javaMailSender;
-    @Resource
+    @Autowired
     MailProperties mailProperties;
-    @Resource
+    @Autowired
     TemplateEngine templateEngine;
-    @Resource
+    @Autowired
     StringRedisTemplate redisTemplate;
 
 

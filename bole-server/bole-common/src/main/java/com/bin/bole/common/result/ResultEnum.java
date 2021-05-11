@@ -10,8 +10,9 @@ import lombok.Getter;
 @Getter
 public enum ResultEnum {
 
-    SUCCESS(0, "成功"),
-    ERROR(-200, "请求失败");
+    SUCCESS(200, "成功"),
+    ERROR(-200, "请求失败"),
+    SQL_ERROR(-301, "数据库错误");
 
     ResultEnum(Integer code, String msg) {
         this.code = code;
