@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * @author leo-bin
  * @date 2021/5/11 15:23
- * @apiNote
+ * @apiNote 民族
  */
 public class Nation implements Serializable {
     private Integer id;
@@ -25,13 +25,11 @@ public class Nation implements Serializable {
     }
 
     public Nation(String name) {
-
         this.name = name;
     }
 
     @Override
     public int hashCode() {
-
         return Objects.hash(name);
     }
 

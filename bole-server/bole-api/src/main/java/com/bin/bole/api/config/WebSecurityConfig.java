@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,7 +29,7 @@ import java.io.PrintWriter;
 /**
  * @author binLi
  * @date 2021/3/11 5:14 下午
- * Description：
+ * Description：全局权限config
  **/
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -58,6 +59,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     LoginFilter loginFilter() throws Exception {
         LoginFilter loginFilter = new LoginFilter();
+
+        //login success
         loginFilter.setAuthenticationSuccessHandler((request, response, authentication) -> {
                     response.setContentType("application/json;charset=utf-8");
                     PrintWriter out = response.getWriter();
@@ -70,6 +73,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     out.close();
                 }
         );
+
+        // login failure
         loginFilter.setAuthenticationFailureHandler((request, response, exception) -> {
                     response.setContentType("application/json;charset=utf-8");
                     PrintWriter out = response.getWriter();
@@ -84,13 +89,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         respBean.setMsg("账户被禁用，请联系管理员!");
                     } else if (exception instanceof BadCredentialsException) {
                         respBean.setMsg("用户名或者密码输入错误，请重新输入!");
+                    } else {
+                        respBean.setMsg(exception.getMessage());
                     }
                     out.write(new ObjectMapper().writeValueAsString(respBean));
                     out.flush();
                     out.close();
                 }
         );
+
         loginFilter.setAuthenticationManager(authenticationManagerBean());
+        // handle login request url
         loginFilter.setFilterProcessesUrl("/doLogin");
         ConcurrentSessionControlAuthenticationStrategy sessionStrategy = new ConcurrentSessionControlAuthenticationStrategy(sessionRegistry());
         sessionStrategy.setMaximumSessions(1);
@@ -102,6 +111,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     SessionRegistryImpl sessionRegistry() {
         return new SessionRegistryImpl();
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

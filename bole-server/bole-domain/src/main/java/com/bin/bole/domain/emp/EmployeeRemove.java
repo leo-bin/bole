@@ -5,15 +5,15 @@ import java.util.Date;
 /**
  * @author leo-bin
  * @date 2021/5/11 15:23
- * @apiNote
+ * @apiNote 员工调动（内部活水）
  */
-public class Employeeremove {
+public class EmployeeRemove {
 
     private Integer id;
     private Integer eid;
-    private Integer afterdepid;
-    private Integer afterjobid;
-    private Date removedate;
+    private Integer afterDepId;
+    private Integer afterJobId;
+    private Date removeDate;
     private String reason;
     private String remark;
 
@@ -33,28 +33,28 @@ public class Employeeremove {
         this.eid = eid;
     }
 
-    public Integer getAfterdepid() {
-        return afterdepid;
+    public Integer getAfterDepId() {
+        return afterDepId;
     }
 
-    public void setAfterdepid(Integer afterdepid) {
-        this.afterdepid = afterdepid;
+    public void setAfterDepId(Integer afterDepId) {
+        this.afterDepId = afterDepId;
     }
 
-    public Integer getAfterjobid() {
-        return afterjobid;
+    public Integer getAfterJobId() {
+        return afterJobId;
     }
 
-    public void setAfterjobid(Integer afterjobid) {
-        this.afterjobid = afterjobid;
+    public void setAfterJobId(Integer afterJobId) {
+        this.afterJobId = afterJobId;
     }
 
-    public Date getRemovedate() {
-        return removedate;
+    public Date getRemoveDate() {
+        return removeDate;
     }
 
-    public void setRemovedate(Date removedate) {
-        this.removedate = removedate;
+    public void setRemoveDate(Date removeDate) {
+        this.removeDate = removeDate;
     }
 
     public String getReason() {

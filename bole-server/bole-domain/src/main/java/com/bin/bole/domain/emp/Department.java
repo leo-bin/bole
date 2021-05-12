@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * @author leo-bin
  * @date 2021/5/11 15:23
- * @apiNote
+ * @apiNote 部门
  */
 public class Department implements Serializable {
 

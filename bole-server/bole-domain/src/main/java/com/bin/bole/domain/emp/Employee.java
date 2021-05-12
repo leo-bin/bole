@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * @author leo-bin
  * @date 2021/5/11 15:23
- * @apiNote
+ * @apiNote 员工
  */
 public class Employee implements Serializable {
 
@@ -51,7 +51,7 @@ public class Employee implements Serializable {
 
     private Integer workAge;
     private Nation nation;
-    private Politicsstatus politicsstatus;
+    private PoliticsStatus politicsstatus;
     private Department department;
     private JobLevel jobLevel;
     private Position position;
@@ -111,11 +111,11 @@ public class Employee implements Serializable {
         this.nation = nation;
     }
 
-    public Politicsstatus getPoliticsstatus() {
+    public PoliticsStatus getPoliticsstatus() {
         return politicsstatus;
     }
 
-    public void setPoliticsstatus(Politicsstatus politicsstatus) {
+    public void setPoliticsstatus(PoliticsStatus politicsstatus) {
         this.politicsstatus = politicsstatus;
     }
 

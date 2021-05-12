@@ -12,9 +12,9 @@ public class AdjustSalary {
 
     private Integer id;
     private Integer eid;
-    private Date asdate;
-    private Integer beforesalary;
-    private Integer aftersalary;
+    private Date asDate;
+    private Integer beforeSalary;
+    private Integer afterSalary;
     private String reason;
     private String remark;
 
@@ -34,28 +34,28 @@ public class AdjustSalary {
         this.eid = eid;
     }
 
-    public Date getAsdate() {
-        return asdate;
+    public Date getAsDate() {
+        return asDate;
     }
 
-    public void setAsdate(Date asdate) {
-        this.asdate = asdate;
+    public void setAsDate(Date asDate) {
+        this.asDate = asDate;
     }
 
-    public Integer getBeforesalary() {
-        return beforesalary;
+    public Integer getBeforeSalary() {
+        return beforeSalary;
     }
 
-    public void setBeforesalary(Integer beforesalary) {
-        this.beforesalary = beforesalary;
+    public void setBeforeSalary(Integer beforeSalary) {
+        this.beforeSalary = beforeSalary;
     }
 
-    public Integer getAftersalary() {
-        return aftersalary;
+    public Integer getAfterSalary() {
+        return afterSalary;
     }
 
-    public void setAftersalary(Integer aftersalary) {
-        this.aftersalary = aftersalary;
+    public void setAfterSalary(Integer afterSalary) {
+        this.afterSalary = afterSalary;
     }
 
     public String getReason() {

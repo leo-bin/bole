@@ -2,16 +2,17 @@ package com.bin.bole.domain.emp;
 
 import java.util.Date;
 
-public class Employeetrain {
+/**
+ * @author leo-bin
+ * @date 2021/5/11 15:23
+ * @apiNote 员工培训
+ */
+public class EmployeeTrain {
 
     private Integer id;
-
     private Integer eid;
-
-    private Date traindate;
-
-    private String traincontent;
-
+    private Date trainDate;
+    private String trainContent;
     private String remark;
 
     public Integer getId() {
@@ -30,20 +31,20 @@ public class Employeetrain {
         this.eid = eid;
     }
 
-    public Date getTraindate() {
-        return traindate;
+    public Date getTrainDate() {
+        return trainDate;
     }
 
-    public void setTraindate(Date traindate) {
-        this.traindate = traindate;
+    public void setTrainDate(Date trainDate) {
+        this.trainDate = trainDate;
     }
 
-    public String getTraincontent() {
-        return traincontent;
+    public String getTrainContent() {
+        return trainContent;
     }
 
-    public void setTraincontent(String traincontent) {
-        this.traincontent = traincontent == null ? null : traincontent.trim();
+    public void setTrainContent(String trainContent) {
+        this.trainContent = trainContent == null ? null : trainContent.trim();
     }
 
     public String getRemark() {

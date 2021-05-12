@@ -9,12 +9,18 @@ import java.util.Objects;
 /**
  * @author leo-bin
  * @date 2021/5/11 15:23
- * @apiNote
+ * @apiNote 职位等级
  */
 public class JobLevel implements Serializable {
 
     private Integer id;
+    /**
+     * name:初级，中级，高级工程师
+     */
     private String name;
+    /**
+     * level:初级,中级，高级
+     */
     private String titleLevel;
 
     @Override

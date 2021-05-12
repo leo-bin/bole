@@ -4,24 +4,24 @@
 
     <resultMap id="BaseResultMap" type="com.bin.bole.domain.hr.HrRole">
         <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="hrid" property="hrid" jdbcType="INTEGER"/>
+        <result column="hrId" property="hrId" jdbcType="INTEGER"/>
         <result column="rid" property="rid" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, hrid, rid
+        id, hrId, rid
     </sql>
 
     <delete id="deleteByHrid">
         delete
         from hr_role
-        where hrid = #{hrid}
+        where hrId = #{hrId}
     </delete>
 
     <insert id="addRole">
-        insert into hr_role (hrid,rid) values
+        insert into hr_role (hrId,rid) values
         <foreach collection="rids" item="rid" separator=",">
-            (#{hrid},#{rid})
+            (#{hrId},#{rid})
         </foreach>
     </insert>
 
@@ -39,8 +39,8 @@
     </delete>
 
     <insert id="insert" parameterType="com.bin.bole.domain.hr.HrRole">
-        insert into hr_role (id, hrid, rid)
-        values (#{id,jdbcType=INTEGER}, #{hrid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER})
+        insert into hr_role (id, hrId, rid)
+        values (#{id,jdbcType=INTEGER}, #{hrId,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER})
     </insert>
 
     <insert id="insertSelective" parameterType="com.bin.bole.domain.hr.HrRole">
@@ -49,8 +49,8 @@
             <if test="id != null">
                 id,
             </if>
-            <if test="hrid != null">
-                hrid,
+            <if test="hrId != null">
+                hrId,
             </if>
             <if test="rid != null">
                 rid,
@@ -60,8 +60,8 @@
             <if test="id != null">
                 #{id,jdbcType=INTEGER},
             </if>
-            <if test="hrid != null">
-                #{hrid,jdbcType=INTEGER},
+            <if test="hrId != null">
+                #{hrId,jdbcType=INTEGER},
             </if>
             <if test="rid != null">
                 #{rid,jdbcType=INTEGER},
@@ -72,8 +72,8 @@
     <update id="updateByPrimaryKeySelective" parameterType="com.bin.bole.domain.hr.HrRole">
         update hr_role
         <set>
-            <if test="hrid != null">
-                hrid = #{hrid,jdbcType=INTEGER},
+            <if test="hrId != null">
+                hrId = #{hrId,jdbcType=INTEGER},
             </if>
             <if test="rid != null">
                 rid = #{rid,jdbcType=INTEGER},
@@ -84,7 +84,7 @@
 
     <update id="updateByPrimaryKey" parameterType="com.bin.bole.domain.hr.HrRole">
         update hr_role
-        set hrid = #{hrid,jdbcType=INTEGER},
+        set hrId = #{hrId,jdbcType=INTEGER},
             rid  = #{rid,jdbcType=INTEGER}
         where id = #{id,jdbcType=INTEGER}
     </update>

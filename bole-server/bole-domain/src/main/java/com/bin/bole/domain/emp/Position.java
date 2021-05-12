@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * @author leo-bin
  * @date 2021/5/11 15:23
- * @apiNote
+ * @apiNote 职位，职级
  */
 public class Position implements Serializable {
 
@@ -17,8 +17,12 @@ public class Position implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Position position = (Position) o;
         return Objects.equals(name, position.name);
     }
@@ -29,17 +33,15 @@ public class Position implements Serializable {
     }
 
     public Position() {
-
     }
 
     public Position(String name) {
-
         this.name = name;
     }
 
     private String name;
 
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     private Date createDate;
 
     private Boolean enabled;

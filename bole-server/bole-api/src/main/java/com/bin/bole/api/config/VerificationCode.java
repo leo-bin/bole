@@ -14,14 +14,16 @@ import java.util.Random;
  */
 public class VerificationCode {
 
+
+
     private int width = 100;// 生成验证码图片的宽度
     private int height = 30;// 生成验证码图片的高度
     private String[] fontNames = {"宋体", "楷体", "隶书", "微软雅黑"};
     private Color bgColor = new Color(255, 255, 255);// 定义验证码图片的背景颜色为白色
     private Random random = new Random();
-    private String codes = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private String text;// 记录随机字符串
 
+    private final static String CODES = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     /**
      * 获取一个随意颜色
@@ -47,7 +49,7 @@ public class VerificationCode {
      * 获取一个随机字符
      */
     private char randomChar() {
-        return codes.charAt(random.nextInt(codes.length()));
+        return CODES.charAt(random.nextInt(CODES.length()));
     }
 
     /**

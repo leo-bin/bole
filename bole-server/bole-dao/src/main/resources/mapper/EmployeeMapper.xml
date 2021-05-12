@@ -38,7 +38,7 @@
             <id column="nid" property="id"/>
             <result column="nname" property="name"/>
         </association>
-        <association property="politicsstatus" javaType="com.bin.bole.domain.emp.Politicsstatus">
+        <association property="politicsstatus" javaType="com.bin.bole.domain.emp.PoliticsStatus">
             <id column="pid" property="id"/>
             <result column="pname" property="name"/>
         </association>

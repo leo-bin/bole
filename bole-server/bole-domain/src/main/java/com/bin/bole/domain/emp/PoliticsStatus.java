@@ -6,18 +6,25 @@ import java.util.Objects;
 /**
  * @author leo-bin
  * @date 2021/5/11 15:23
- * @apiNote
+ * @apiNote 政治状态
  */
-public class Politicsstatus implements Serializable {
-    private Integer id;
+public class PoliticsStatus implements Serializable {
 
+    private Integer id;
+    /**
+     * 公民，党员，共青团员
+     */
     private String name;
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Politicsstatus that = (Politicsstatus) o;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PoliticsStatus that = (PoliticsStatus) o;
         return Objects.equals(name, that.name);
     }
 
@@ -27,12 +34,10 @@ public class Politicsstatus implements Serializable {
         return Objects.hash(name);
     }
 
-    public Politicsstatus() {
-
+    public PoliticsStatus() {
     }
 
-    public Politicsstatus(String name) {
-
+    public PoliticsStatus(String name) {
         this.name = name;
     }
 

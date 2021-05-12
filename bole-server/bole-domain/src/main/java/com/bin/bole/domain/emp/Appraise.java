@@ -5,15 +5,15 @@ import java.util.Date;
 /**
  * @author leo-bin
  * @date 2021/5/11 15:23
- * @apiNote 评价
+ * @apiNote 考评
  */
 public class Appraise {
 
     private Integer id;
     private Integer eid;
-    private Date appdate;
-    private String appresult;
-    private String appcontent;
+    private Date appDate;
+    private String appResult;
+    private String appContent;
     private String remark;
 
     public Integer getId() {
@@ -32,28 +32,28 @@ public class Appraise {
         this.eid = eid;
     }
 
-    public Date getAppdate() {
-        return appdate;
+    public Date getAppDate() {
+        return appDate;
     }
 
-    public void setAppdate(Date appdate) {
-        this.appdate = appdate;
+    public void setAppDate(Date appDate) {
+        this.appDate = appDate;
     }
 
-    public String getAppresult() {
-        return appresult;
+    public String getAppResult() {
+        return appResult;
     }
 
-    public void setAppresult(String appresult) {
-        this.appresult = appresult == null ? null : appresult.trim();
+    public void setAppResult(String appResult) {
+        this.appResult = appResult == null ? null : appResult.trim();
     }
 
-    public String getAppcontent() {
-        return appcontent;
+    public String getAppContent() {
+        return appContent;
     }
 
-    public void setAppcontent(String appcontent) {
-        this.appcontent = appcontent == null ? null : appcontent.trim();
+    public void setAppContent(String appContent) {
+        this.appContent = appContent == null ? null : appContent.trim();
     }
 
     public String getRemark() {

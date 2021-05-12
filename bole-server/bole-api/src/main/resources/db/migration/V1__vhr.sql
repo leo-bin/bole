@@ -2140,12 +2140,12 @@ DROP TABLE IF EXISTS `hr_role`;
 CREATE TABLE `hr_role`
 (
   `id`   int(11) NOT NULL AUTO_INCREMENT,
-  `hrid` int(11) DEFAULT NULL,
+  `hrId` int(11) DEFAULT NULL,
   `rid`  int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `rid` (`rid`),
-  KEY `hr_role_ibfk_1` (`hrid`),
-  CONSTRAINT `hr_role_ibfk_1` FOREIGN KEY (`hrid`) REFERENCES `hr` (`id`) ON DELETE CASCADE,
+  KEY `hr_role_ibfk_1` (`hrId`),
+  CONSTRAINT `hr_role_ibfk_1` FOREIGN KEY (`hrId`) REFERENCES `hr` (`id`) ON DELETE CASCADE,
   CONSTRAINT `hr_role_ibfk_2` FOREIGN KEY (`rid`) REFERENCES `role` (`id`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 75
@@ -2153,7 +2153,7 @@ CREATE TABLE `hr_role`
 
 /*Data for the table `hr_role` */
 
-insert into `hr_role`(`id`, `hrid`, `rid`)
+insert into `hr_role`(`id`, `hrId`, `rid`)
 values (1, 3, 6),
        (35, 12, 4),
        (36, 12, 3),
@@ -2249,7 +2249,7 @@ values (1, '/', NULL, NULL, '所有', NULL, NULL, NULL, NULL, 1),
        (24, '/system/cfg/**', '/sys/cfg', 'SysCfg', '系统管理', NULL, NULL, 1, 6, 1),
        (25, '/system/log/**', '/sys/log', 'SysLog', '操作日志管理', NULL, NULL, 1, 6, 1),
        (26, '/system/hr/**', '/sys/hr', 'SysHr', '操作员管理', NULL, NULL, 1, 6, 1),
-       (27, '/system/data/**', '/sys/data', 'SysData', '备份恢复数据库', NULL, NULL, 1, 6, 1),
+       (27, '/system/obj/**', '/sys/obj', 'SysData', '备份恢复数据库', NULL, NULL, 1, 6, 1),
        (28, '/system/init/**', '/sys/init', 'SysInit', '初始化数据库', NULL, NULL, 1, 6, 1);
 
 /*Table structure for table `menu_role` */
@@ -2436,10 +2436,10 @@ CREATE TABLE `oplog`
   `id`      int(11) NOT NULL AUTO_INCREMENT,
   `addDate` date         DEFAULT NULL COMMENT '添加日期',
   `operate` varchar(255) DEFAULT NULL COMMENT '操作内容',
-  `hrid`    int(11)      DEFAULT NULL COMMENT '操作员ID',
+  `hrId`    int(11)      DEFAULT NULL COMMENT '操作员ID',
   PRIMARY KEY (`id`),
-  KEY `hrid` (`hrid`),
-  CONSTRAINT `oplog_ibfk_1` FOREIGN KEY (`hrid`) REFERENCES `hr` (`id`)
+  KEY `hrId` (`hrId`),
+  CONSTRAINT `oplog_ibfk_1` FOREIGN KEY (`hrId`) REFERENCES `hr` (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
@@ -2575,20 +2575,20 @@ CREATE TABLE `sysmsg`
   `id`    int(11) NOT NULL AUTO_INCREMENT,
   `mid`   int(11) DEFAULT NULL COMMENT '消息id',
   `type`  int(11) DEFAULT '0' COMMENT '0表示群发消息',
-  `hrid`  int(11) DEFAULT NULL COMMENT '这条消息是给谁的',
+  `hrId`  int(11) DEFAULT NULL COMMENT '这条消息是给谁的',
   `state` int(11) DEFAULT '0' COMMENT '0 未读 1 已读',
   PRIMARY KEY (`id`),
-  KEY `hrid` (`hrid`),
+  KEY `hrId` (`hrId`),
   KEY `sysmsg_ibfk_1` (`mid`),
   CONSTRAINT `sysmsg_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `msgcontent` (`id`),
-  CONSTRAINT `sysmsg_ibfk_2` FOREIGN KEY (`hrid`) REFERENCES `hr` (`id`)
+  CONSTRAINT `sysmsg_ibfk_2` FOREIGN KEY (`hrId`) REFERENCES `hr` (`id`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 82
   DEFAULT CHARSET = utf8;
 
 /*Data for the table `sysmsg` */
 
-insert into `sysmsg`(`id`, `mid`, `type`, `hrid`, `state`)
+insert into `sysmsg`(`id`, `mid`, `type`, `hrId`, `state`)
 values (57, 14, 0, 3, 1),
        (58, 14, 0, 5, 1),
        (59, 14, 0, 10, 1),

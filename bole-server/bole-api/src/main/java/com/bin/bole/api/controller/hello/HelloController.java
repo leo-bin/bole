@@ -1,4 +1,4 @@
-package com.bin.bole.api.controller;
+package com.bin.bole.api.controller.hello;
 
 import com.bin.bole.common.result.Result;
 import lombok.extern.slf4j.Slf4j;

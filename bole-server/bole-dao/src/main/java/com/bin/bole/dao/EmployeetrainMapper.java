@@ -1,18 +1,18 @@
 package com.bin.bole.dao;
 
 
-import com.bin.bole.domain.emp.Employeetrain;
+import com.bin.bole.domain.emp.EmployeeTrain;
 
 public interface EmployeetrainMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Employeetrain record);
+    int insert(EmployeeTrain record);
 
-    int insertSelective(Employeetrain record);
+    int insertSelective(EmployeeTrain record);
 
-    Employeetrain selectByPrimaryKey(Integer id);
+    EmployeeTrain selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Employeetrain record);
+    int updateByPrimaryKeySelective(EmployeeTrain record);
 
-    int updateByPrimaryKey(Employeetrain record);
+    int updateByPrimaryKey(EmployeeTrain record);
 }

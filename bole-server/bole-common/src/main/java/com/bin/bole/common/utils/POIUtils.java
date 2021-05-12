@@ -212,7 +212,7 @@ public class POIUtils {
     /**
      * Excel 解析成 员工数据集合
      */
-    public static List<Employee> excel2Employee(MultipartFile file, List<Nation> allNations, List<Politicsstatus> allPoliticsstatus, List<Department> allDepartments, List<Position> allPositions, List<JobLevel> allJobLevels) {
+    public static List<Employee> excel2Employee(MultipartFile file, List<Nation> allNations, List<PoliticsStatus> allPoliticsStatuses, List<Department> allDepartments, List<Position> allPositions, List<JobLevel> allJobLevels) {
         List<Employee> list = new ArrayList<>();
         Employee employee;
         try {
@@ -267,8 +267,8 @@ public class POIUtils {
                                         employee.setNativePlace(cellValue);
                                         break;
                                     case 9:
-                                        int politicstatusIndex = allPoliticsstatus.indexOf(new Politicsstatus(cellValue));
-                                        employee.setPoliticId(allPoliticsstatus.get(politicstatusIndex).getId());
+                                        int politicstatusIndex = allPoliticsStatuses.indexOf(new PoliticsStatus(cellValue));
+                                        employee.setPoliticId(allPoliticsStatuses.get(politicstatusIndex).getId());
                                         break;
                                     case 10:
                                         employee.setPhone(cellValue);

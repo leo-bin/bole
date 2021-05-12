@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.bin.bole.dao.EmployeeremoveMapper">
+<mapper namespace="com.bin.bole.dao.EmployeeRemoveMapper">
 
-    <resultMap id="BaseResultMap" type="com.bin.bole.domain.emp.Employeeremove">
+    <resultMap id="BaseResultMap" type="com.bin.bole.domain.emp.EmployeeRemove">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="eid" property="eid" jdbcType="INTEGER"/>
-        <result column="afterDepId" property="afterdepid" jdbcType="INTEGER"/>
-        <result column="afterJobId" property="afterjobid" jdbcType="INTEGER"/>
-        <result column="removeDate" property="removedate" jdbcType="DATE"/>
+        <result column="afterDepId" property="afterDepId" jdbcType="INTEGER"/>
+        <result column="afterJobId" property="afterJobId" jdbcType="INTEGER"/>
+        <result column="removeDate" property="removeDate" jdbcType="DATE"/>
         <result column="reason" property="reason" jdbcType="VARCHAR"/>
         <result column="remark" property="remark" jdbcType="VARCHAR"/>
     </resultMap>
@@ -29,16 +29,16 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
 
-    <insert id="insert" parameterType="com.bin.bole.domain.emp.Employeeremove">
+    <insert id="insert" parameterType="com.bin.bole.domain.emp.EmployeeRemove">
         insert into employeeremove (id, eid, afterDepId,
-                                    afterJobId, removeDate, reason,
-                                    remark)
-        values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{afterdepid,jdbcType=INTEGER},
-                #{afterjobid,jdbcType=INTEGER}, #{removedate,jdbcType=DATE}, #{reason,jdbcType=VARCHAR},
-                #{remark,jdbcType=VARCHAR})
+        afterJobId, removeDate, reason,
+        remark)
+        values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{afterDepId,jdbcType=INTEGER},
+        #{afterJobId,jdbcType=INTEGER}, #{removeDate,jdbcType=DATE}, #{reason,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR})
     </insert>
 
-    <insert id="insertSelective" parameterType="com.bin.bole.domain.emp.Employeeremove">
+    <insert id="insertSelective" parameterType="com.bin.bole.domain.emp.EmployeeRemove">
         insert into employeeremove
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -47,13 +47,13 @@
             <if test="eid != null">
                 eid,
             </if>
-            <if test="afterdepid != null">
+            <if test="afterDepId != null">
                 afterDepId,
             </if>
-            <if test="afterjobid != null">
+            <if test="afterJobId != null">
                 afterJobId,
             </if>
-            <if test="removedate != null">
+            <if test="removeDate != null">
                 removeDate,
             </if>
             <if test="reason != null">
@@ -70,14 +70,14 @@
             <if test="eid != null">
                 #{eid,jdbcType=INTEGER},
             </if>
-            <if test="afterdepid != null">
-                #{afterdepid,jdbcType=INTEGER},
+            <if test="afterDepId != null">
+                #{afterDepId,jdbcType=INTEGER},
             </if>
-            <if test="afterjobid != null">
-                #{afterjobid,jdbcType=INTEGER},
+            <if test="afterJobId != null">
+                #{afterJobId,jdbcType=INTEGER},
             </if>
-            <if test="removedate != null">
-                #{removedate,jdbcType=DATE},
+            <if test="removeDate != null">
+                #{removeDate,jdbcType=DATE},
             </if>
             <if test="reason != null">
                 #{reason,jdbcType=VARCHAR},
@@ -88,20 +88,20 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.bin.bole.domain.emp.Employeeremove">
+    <update id="updateByPrimaryKeySelective" parameterType="com.bin.bole.domain.emp.EmployeeRemove">
         update employeeremove
         <set>
             <if test="eid != null">
                 eid = #{eid,jdbcType=INTEGER},
             </if>
-            <if test="afterdepid != null">
-                afterDepId = #{afterdepid,jdbcType=INTEGER},
+            <if test="afterDepId != null">
+                afterDepId = #{afterDepId,jdbcType=INTEGER},
             </if>
-            <if test="afterjobid != null">
-                afterJobId = #{afterjobid,jdbcType=INTEGER},
+            <if test="afterJobId != null">
+                afterJobId = #{afterJobId,jdbcType=INTEGER},
             </if>
-            <if test="removedate != null">
-                removeDate = #{removedate,jdbcType=DATE},
+            <if test="removeDate != null">
+                removeDate = #{removeDate,jdbcType=DATE},
             </if>
             <if test="reason != null">
                 reason = #{reason,jdbcType=VARCHAR},
@@ -113,14 +113,14 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
 
-    <update id="updateByPrimaryKey" parameterType="com.bin.bole.domain.emp.Employeeremove">
+    <update id="updateByPrimaryKey" parameterType="com.bin.bole.domain.emp.EmployeeRemove">
         update employeeremove
-        set eid        = #{eid,jdbcType=INTEGER},
-            afterDepId = #{afterdepid,jdbcType=INTEGER},
-            afterJobId = #{afterjobid,jdbcType=INTEGER},
-            removeDate = #{removedate,jdbcType=DATE},
-            reason     = #{reason,jdbcType=VARCHAR},
-            remark     = #{remark,jdbcType=VARCHAR}
+        set eid = #{eid,jdbcType=INTEGER},
+        afterDepId = #{afterDepId,jdbcType=INTEGER},
+        afterJobId = #{afterJobId,jdbcType=INTEGER},
+        removeDate = #{removeDate,jdbcType=DATE},
+        reason = #{reason,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

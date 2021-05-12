@@ -31,9 +31,10 @@ public class EmployeeService {
 
     public final static Logger logger = LoggerFactory.getLogger(EmployeeService.class);
 
-    SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
-    SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
-    DecimalFormat decimalFormat = new DecimalFormat("##.00");
+    private SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+    private SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
+    private DecimalFormat decimalFormat = new DecimalFormat("##.00");
+
 
     public RespPageBean getEmployeeByPage(Integer page, Integer size, Employee employee, Date[] beginDateScope) {
         if (page != null && size != null) {

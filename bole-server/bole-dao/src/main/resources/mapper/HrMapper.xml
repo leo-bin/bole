@@ -36,7 +36,7 @@
     <select id="getAllHrs" resultMap="HrWithRoles">
         select hr.id, hr.name, hr.phone, hr.telephone, hr.address, hr.enabled, hr.username, hr.userface,
         hr.remark,r.`id` as rid,r.`name` as rname,r.`nameZh` as rnameZh from hr left join hr_role hrr on
-        hr.`id`=hrr.`hrid` left join role r on hrr.`rid`=r.`id` where hr.`id`!=#{hrid}
+        hr.`id`=hrr.`hrId` left join role r on hrr.`rid`=r.`id` where hr.`id`!=#{hrId}
         <if test="keywords!=null">
             and hr.name like concat('%',#{keywords},'%')
         </if>
@@ -48,7 +48,7 @@
         from role r,
              hr_role hrr
         where hrr.`rid` = r.`id`
-          and hrr.`hrid` = #{id}
+          and hrr.`hrId` = #{id}
     </select>
 
     <select id="loadUserByUsername" resultMap="BaseResultMap">
@@ -192,7 +192,7 @@
     <update id="updatePasswd">
         update hr
         set password = #{encodePass}
-        where id = #{hrid};
+        where id = #{hrId};
     </update>
 
     <update id="updateByPrimaryKey" parameterType="com.bin.bole.domain.hr.Hr">

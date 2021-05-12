@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8081
 
 spring:
   datasource:
@@ -30,3 +30,7 @@ mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+fastdfs:
+  nginx:
+    host: http://192.168.91.128/

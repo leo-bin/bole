@@ -17,7 +17,7 @@ public class Result<T> implements Serializable {
     /**
      * 状态码
      */
-    private Integer code;
+    private Integer status;
     /**
      * 状态信息
      */
@@ -25,16 +25,16 @@ public class Result<T> implements Serializable {
     /**
      * 消息体
      */
-    private T data;
+    private T obj;
 
     /**
      * success
      */
     public static <T> Result<T> success(Integer code, String msg, T data) {
         Result<T> result = new Result<>();
-        result.setCode(code);
+        result.setStatus(code);
         result.setMsg(msg);
-        result.setData(data);
+        result.setObj(data);
         return result;
     }
 
@@ -51,9 +51,9 @@ public class Result<T> implements Serializable {
      */
     public static <T> Result<T> error(Integer code, String msg, T data) {
         Result<T> result = new Result<>();
-        result.setCode(code);
+        result.setStatus(code);
         result.setMsg(msg);
-        result.setData(data);
+        result.setObj(data);
         return result;
     }
 

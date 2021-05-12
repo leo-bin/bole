@@ -6,12 +6,12 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="mid" property="mid" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="INTEGER"/>
-        <result column="hrid" property="hrid" jdbcType="INTEGER"/>
+        <result column="hrId" property="hrId" jdbcType="INTEGER"/>
         <result column="state" property="state" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, mid, type, hrid, state
+        id, mid, type, hrId, state
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
@@ -29,9 +29,9 @@
 
     <insert id="insert" parameterType="com.bin.bole.domain.sys.SysMsg">
         insert into sysmsg (id, mid, type,
-                            hrid, state)
+                            hrId, state)
         values (#{id,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER},
-                #{hrid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
+                #{hrId,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
     </insert>
 
     <insert id="insertSelective" parameterType="com.bin.bole.domain.sys.SysMsg">
@@ -46,8 +46,8 @@
             <if test="type != null">
                 type,
             </if>
-            <if test="hrid != null">
-                hrid,
+            <if test="hrId != null">
+                hrId,
             </if>
             <if test="state != null">
                 state,
@@ -63,8 +63,8 @@
             <if test="type != null">
                 #{type,jdbcType=INTEGER},
             </if>
-            <if test="hrid != null">
-                #{hrid,jdbcType=INTEGER},
+            <if test="hrId != null">
+                #{hrId,jdbcType=INTEGER},
             </if>
             <if test="state != null">
                 #{state,jdbcType=INTEGER},
@@ -81,8 +81,8 @@
             <if test="type != null">
                 type = #{type,jdbcType=INTEGER},
             </if>
-            <if test="hrid != null">
-                hrid = #{hrid,jdbcType=INTEGER},
+            <if test="hrId != null">
+                hrId = #{hrId,jdbcType=INTEGER},
             </if>
             <if test="state != null">
                 state = #{state,jdbcType=INTEGER},
@@ -95,7 +95,7 @@
         update sysmsg
         set mid   = #{mid,jdbcType=INTEGER},
             type  = #{type,jdbcType=INTEGER},
-            hrid  = #{hrid,jdbcType=INTEGER},
+            hrId  = #{hrId,jdbcType=INTEGER},
             state = #{state,jdbcType=INTEGER}
         where id = #{id,jdbcType=INTEGER}
     </update>

@@ -1,5 +1,7 @@
 package com.bin.bole.domain.sys;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
@@ -7,6 +9,7 @@ import java.util.Date;
  * @date 2021/5/11 15:23
  * @apiNote
  */
+@Data
 public class ChatMsg {
 
     private String from;
@@ -14,44 +17,4 @@ public class ChatMsg {
     private String content;
     private Date date;
     private String fromNickname;
-
-    public String getFromNickname() {
-        return fromNickname;
-    }
-
-    public void setFromNickname(String fromNickname) {
-        this.fromNickname = fromNickname;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 }

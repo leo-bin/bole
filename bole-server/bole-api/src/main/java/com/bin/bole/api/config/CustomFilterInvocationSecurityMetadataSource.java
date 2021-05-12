@@ -23,7 +23,7 @@ public class CustomFilterInvocationSecurityMetadataSource implements FilterInvoc
     @Autowired
     MenuService menuService;
 
-    AntPathMatcher antPathMatcher = new AntPathMatcher();
+    private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {

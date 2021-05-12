@@ -11,7 +11,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
-
+/**
+ * @author binLi
+ * @date 2021/5/11 5:14 下午
+ * Description：url权限判定管理
+ **/
 @Component
 public class CustomUrlDecisionManager implements AccessDecisionManager {
 
@@ -22,7 +26,7 @@ public class CustomUrlDecisionManager implements AccessDecisionManager {
             if ("ROLE_LOGIN".equals(needRole)) {
                 if (authentication instanceof AnonymousAuthenticationToken) {
                     throw new AccessDeniedException("尚未登录，请登录!");
-                }else {
+                } else {
                     return;
                 }
             }
