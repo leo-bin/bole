@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.session.SessionInformation;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,6 +26,7 @@ import org.springframework.security.web.session.ConcurrentSessionFilter;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * @author binLi
@@ -127,6 +129,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutSuccessHandler((req, resp, authentication) -> {
+                            sessionRegistry().getAllSessions(authentication.getPrincipal(), false).forEach(session -> {
+                                session.expireNow();
+                            });
                             resp.setContentType("application/json;charset=utf-8");
                             PrintWriter out = resp.getWriter();
                             out.write(new ObjectMapper().writeValueAsString(Result.success("注销成功!")));
@@ -151,6 +156,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             out.close();
                         }
                 );
+
         http.addFilterAt(new ConcurrentSessionFilter(sessionRegistry(), event -> {
             HttpServletResponse resp = event.getResponse();
             resp.setContentType("application/json;charset=utf-8");

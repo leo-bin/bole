@@ -24,11 +24,11 @@ public interface HrMapper {
 
     List<Role> getHrRolesById(Integer id);
 
-    List<Hr> getAllHrs(@Param("hrid") Integer hrid, @Param("keywords") String keywords);
+    List<Hr> getAllHrs(@Param("hrId") Integer hrid, @Param("keywords") String keywords);
 
     List<Hr> getAllHrsExceptCurrentHr(Integer id);
 
-    Integer updatePasswd(@Param("hrid") Integer hrid, @Param("encodePass") String encodePass);
+    Integer updatePasswd(@Param("hrId") Integer hrid, @Param("encodePass") String encodePass);
 
     Integer updateUserface(@Param("url") String url, @Param("id") Integer id);
 }

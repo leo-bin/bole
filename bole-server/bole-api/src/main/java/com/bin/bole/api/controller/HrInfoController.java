@@ -46,7 +46,7 @@ public class HrInfoController {
     public Result updateHrPasswd(@RequestBody Map<String, Object> info) {
         String oldpass = (String) info.get("oldpass");
         String pass = (String) info.get("pass");
-        Integer hrid = (Integer) info.get("hrid");
+        Integer hrid = (Integer) info.get("hrId");
         if (hrService.updateHrPasswd(oldpass, pass, hrid)) {
             return Result.success("更新成功!");
         }
@@ -65,5 +65,6 @@ public class HrInfoController {
         }
         return Result.error("更新失败!");
     }
+
 
 }

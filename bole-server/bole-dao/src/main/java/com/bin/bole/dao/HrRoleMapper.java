@@ -16,7 +16,7 @@ public interface HrRoleMapper {
 
     int updateByPrimaryKey(HrRole record);
 
-    void deleteByHrid(Integer hrid);
+    void deleteByHrid(@Param("hrId") Integer hrId);
 
-    Integer addRole(@Param("hrid") Integer hrid, @Param("rids") Integer[] rids);
+    Integer addRole(@Param("hrId") Integer hrid, @Param("rids") Integer[] rids);
 }

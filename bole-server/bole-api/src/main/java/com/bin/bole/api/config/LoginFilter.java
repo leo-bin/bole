@@ -2,6 +2,7 @@ package com.bin.bole.api.config;
 
 import com.bin.bole.domain.hr.Hr;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationServiceException;
@@ -22,6 +23,7 @@ import java.util.Map;
  * @date 2021/5/11 5:14 下午
  * Description：login filter
  **/
+@Slf4j
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     @Autowired
@@ -58,6 +60,9 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
             Hr principal = new Hr();
             principal.setUsername(username);
             sessionRegistry.registerNewSession(request.getSession(true).getId(), principal);
+            sessionRegistry.getAllSessions(principal, true).forEach(sessionInformation ->
+                    log.info("sessionID={},isExpired={}", sessionInformation.getSessionId(), sessionInformation.isExpired())
+            );
             return this.getAuthenticationManager().authenticate(authRequest);
         } else {
             checkCode(response, request.getParameter("status"), verifyCode);

@@ -3,12 +3,14 @@ package com.bin.bole.api.controller.system;
 
 import com.bin.bole.common.result.Result;
 import com.bin.bole.domain.hr.Hr;
+import com.bin.bole.domain.req.AddHrReq;
 import com.bin.bole.domain.sys.Role;
 import com.bin.bole.service.HrService;
 import com.bin.bole.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -28,6 +30,14 @@ public class HrController {
     @GetMapping("/")
     public List<Hr> getAllHrs(String keywords) {
         return hrService.getAllHrs(keywords);
+    }
+
+    @PostMapping("/")
+    public Result addHr(@RequestBody @Valid AddHrReq addHrReq) {
+        if (hrService.addHr(addHrReq) == 1) {
+            return Result.success("添加成功！");
+        }
+        return Result.error("添加失败!");
     }
 
     @PutMapping("/")
@@ -58,4 +68,5 @@ public class HrController {
         }
         return Result.error("删除失败!");
     }
+
 }

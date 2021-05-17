@@ -11,6 +11,6 @@ import lombok.Data;
 public class HrRole {
 
     private Integer id;
-    private Integer hrid;
+    private Integer hrId;
     private Integer rid;
 }

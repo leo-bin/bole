@@ -4,6 +4,8 @@ import com.bin.bole.common.utils.HrUtils;
 import com.bin.bole.dao.HrMapper;
 import com.bin.bole.dao.HrRoleMapper;
 import com.bin.bole.domain.hr.Hr;
+import com.bin.bole.domain.req.AddHrReq;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -74,5 +76,9 @@ public class HrService implements UserDetailsService {
 
     public Integer updateUserface(String url, Integer id) {
         return hrMapper.updateUserface(url, id);
+    }
+
+    public Integer addHr(AddHrReq hr) {
+        return hrMapper.insertSelective(hr.transfer2Hr());
     }
 }

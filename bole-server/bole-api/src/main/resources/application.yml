@@ -1,5 +1,7 @@
 server:
   port: 8081
+  compression:
+    enabled: true
 
 spring:
   datasource:
@@ -33,4 +35,4 @@ mybatis:
 
 fastdfs:
   nginx:
-    host: http://192.168.91.128/
+    host: http://47.100.170.169/
