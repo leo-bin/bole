@@ -3,8 +3,10 @@ package com.bin.bole.service;
 import com.bin.bole.common.utils.HrUtils;
 import com.bin.bole.dao.HrMapper;
 import com.bin.bole.dao.HrRoleMapper;
+import com.bin.bole.dao.OpLogMapper;
 import com.bin.bole.domain.hr.Hr;
 import com.bin.bole.domain.req.AddHrReq;
+import com.bin.bole.domain.sys.OpLog;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -24,6 +27,8 @@ public class HrService implements UserDetailsService {
     HrMapper hrMapper;
     @Autowired
     HrRoleMapper hrRoleMapper;
+    @Autowired
+    OpLogMapper opLogMapper;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

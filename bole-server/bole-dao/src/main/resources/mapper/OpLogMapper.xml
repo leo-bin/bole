@@ -20,6 +20,17 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
 
+    <select id="getOpLogByPage" resultMap="BaseResultMap">
+        select *
+        from bole.oplog
+        limit #{page},#{size}
+    </select>
+
+    <select id="getTotal" resultType="java.lang.Long">
+        select count(*)
+        from bole.oplog
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete
         from oplog
@@ -28,9 +39,9 @@
 
     <insert id="insert" parameterType="com.bin.bole.domain.sys.OpLog">
         insert into oplog (id, addDate, operate,
-        hrId)
+                           hrId)
         values (#{id,jdbcType=INTEGER}, #{addDate,jdbcType=DATE}, #{operate,jdbcType=VARCHAR},
-        #{hrId,jdbcType=INTEGER})
+                #{hrId,jdbcType=INTEGER})
     </insert>
 
     <insert id="insertSelective" parameterType="com.bin.bole.domain.sys.OpLog">
@@ -84,8 +95,8 @@
     <update id="updateByPrimaryKey" parameterType="com.bin.bole.domain.sys.OpLog">
         update oplog
         set addDate = #{addDate,jdbcType=DATE},
-        operate = #{operate,jdbcType=VARCHAR},
-        hrId = #{hrId,jdbcType=INTEGER}
+            operate = #{operate,jdbcType=VARCHAR},
+            hrId    = #{hrId,jdbcType=INTEGER}
         where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

@@ -1,6 +1,7 @@
 package com.bin.bole.domain.emp;
 
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -11,10 +12,13 @@ import java.util.Date;
 public class AdjustSalary {
 
     private Integer id;
+    @NotNull(message = "eid不能为空")
     private Integer eid;
     private Date asDate;
     private Integer beforeSalary;
+    @NotNull(message = "afterSalary不能为空")
     private Integer afterSalary;
+    @NotNull(message = "reason不能为空")
     private String reason;
     private String remark;
 

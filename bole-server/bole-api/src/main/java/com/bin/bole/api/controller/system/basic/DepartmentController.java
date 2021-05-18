@@ -1,10 +1,12 @@
 package com.bin.bole.api.controller.system.basic;
 
 
+import com.bin.bole.api.aop.OpLogMonitor;
 import com.bin.bole.common.result.Result;
 import com.bin.bole.domain.emp.Department;
 import com.bin.bole.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +28,9 @@ public class DepartmentController {
         return departmentService.getAllDepartments();
     }
 
+    @OpLogMonitor(op = "添加一个部门")
     @PostMapping("/")
-    public Result addDep(@RequestBody Department dep) {
+    public Result addDep(@RequestBody Department dep, Authentication authentication) {
         departmentService.addDep(dep);
         if (dep.getResult() == 1) {
             return Result.success(dep);
@@ -35,8 +38,9 @@ public class DepartmentController {
         return Result.error("添加失败");
     }
 
+    @OpLogMonitor(op = "删除一个部门")
     @DeleteMapping("/{id}")
-    public Result deleteDepById(@PathVariable Integer id) {
+    public Result deleteDepById(@PathVariable Integer id, Authentication authentication) {
         Department dep = new Department();
         dep.setId(id);
         departmentService.deleteDepById(dep);

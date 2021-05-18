@@ -1,6 +1,7 @@
 package com.bin.bole.api.controller.emp;
 
 
+import com.bin.bole.api.aop.OpLogMonitor;
 import com.bin.bole.common.result.Result;
 import com.bin.bole.common.utils.POIUtils;
 import com.bin.bole.domain.emp.*;
@@ -8,6 +9,7 @@ import com.bin.bole.domain.resp.RespPageBean;
 import com.bin.bole.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,16 +44,18 @@ public class EmpBasicController {
         return employeeService.getEmployeeByPage(page, size, employee, beginDateScope);
     }
 
+    @OpLogMonitor(op = "add emp")
     @PostMapping("/")
-    public Result addEmp(@RequestBody Employee employee) {
+    public Result addEmp(@RequestBody Employee employee, Authentication authentication) {
         if (employeeService.addEmp(employee) == 1) {
             return Result.success("添加成功!");
         }
         return Result.error("添加失败!");
     }
 
+    @OpLogMonitor(op = "delete Emp")
     @DeleteMapping("/{id}")
-    public Result deleteEmpByEid(@PathVariable Integer id) {
+    public Result deleteEmpByEid(@PathVariable Integer id, Authentication authentication) {
         if (employeeService.deleteEmpByEid(id) == 1) {
             return Result.success("删除成功!");
         }

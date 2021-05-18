@@ -1,9 +1,11 @@
 package com.bin.bole.api.controller.system.basic;
 
+import com.bin.bole.api.aop.OpLogMonitor;
 import com.bin.bole.common.result.Result;
 import com.bin.bole.domain.emp.Position;
 import com.bin.bole.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,24 +27,27 @@ public class PositionController {
         return positionService.getAllPositions();
     }
 
+    @OpLogMonitor(op = "增加职位")
     @PostMapping("/")
-    public Result addPosition(@RequestBody Position position) {
+    public Result addPosition(@RequestBody Position position, Authentication authentication) {
         if (positionService.addPosition(position) == 1) {
             return Result.success("添加成功!");
         }
         return Result.error("添加失败!");
     }
 
+    @OpLogMonitor(op = "修改职位信息")
     @PutMapping("/")
-    public Result updatePositions(@RequestBody Position position) {
+    public Result updatePositions(@RequestBody Position position, Authentication authentication) {
         if (positionService.updatePositions(position) == 1) {
             return Result.success("更新成功!");
         }
         return Result.error("更新失败!");
     }
 
+    @OpLogMonitor(op = "删除职位")
     @DeleteMapping("/{id}")
-    public Result deletePositionById(@PathVariable Integer id) {
+    public Result deletePositionById(@PathVariable Integer id, Authentication authentication) {
         if (positionService.deletePositionById(id) == 1) {
             return Result.success("删除成功!");
         }

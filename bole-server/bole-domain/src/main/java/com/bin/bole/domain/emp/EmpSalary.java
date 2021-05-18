@@ -13,4 +13,5 @@ public class EmpSalary {
     private Integer id;
     private Integer eid;
     private Integer sid;
+    private Integer baseSalary;
 }

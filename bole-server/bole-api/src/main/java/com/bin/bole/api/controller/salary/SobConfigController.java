@@ -1,12 +1,14 @@
 package com.bin.bole.api.controller.salary;
 
 
+import com.bin.bole.api.aop.OpLogMonitor;
 import com.bin.bole.common.result.Result;
 import com.bin.bole.domain.emp.Salary;
 import com.bin.bole.domain.resp.RespPageBean;
 import com.bin.bole.service.EmployeeService;
 import com.bin.bole.service.SalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,8 +37,9 @@ public class SobConfigController {
         return salaryService.getAllSalaries();
     }
 
+    @OpLogMonitor(op = "update Employee Salary By Id")
     @PutMapping("/")
-    public Result updateEmployeeSalaryById(Integer eid, Integer sid) {
+    public Result updateEmployeeSalaryById(Integer eid, Integer sid, Authentication authentication) {
         Integer result = employeeService.updateEmployeeSalaryById(eid, sid);
         if (result == 1 || result == 2) {
             return Result.success("更新成功");

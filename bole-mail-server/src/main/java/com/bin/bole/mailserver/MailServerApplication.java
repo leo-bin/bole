@@ -1,6 +1,7 @@
 package com.bin.bole.mailserver;
 
-import com.bin.bole.mailserver.consts.MailConst;
+
+import com.bin.bole.common.consts.MailConst;
 import org.springframework.amqp.core.Queue;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

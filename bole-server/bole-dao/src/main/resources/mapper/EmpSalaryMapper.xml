@@ -6,10 +6,35 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="eid" property="eid" jdbcType="INTEGER"/>
         <result column="sid" property="sid" jdbcType="INTEGER"/>
+        <result column="baseSalary" property="baseSalary" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="ResultMap2" type="com.bin.bole.domain.resp.EmpSalaryResp">
+        <result column="eid" property="eid" jdbcType="INTEGER"/>
+        <result column="gender" property="gender" jdbcType="CHAR"/>
+        <result column="workId" property="workId" jdbcType="CHAR"/>
+        <result column="name" property="name" jdbcType="INTEGER"/>
+        <result column="baseSalary" property="baseSalary" jdbcType="INTEGER"/>
+        <association property="salary" javaType="com.bin.bole.domain.emp.Salary">
+            <id column="sid" property="id" jdbcType="INTEGER"/>
+            <result column="sbasicSalary" property="basicSalary" jdbcType="INTEGER"/>
+            <result column="sbonus" property="bonus" jdbcType="INTEGER"/>
+            <result column="slunchSalary" property="lunchSalary" jdbcType="INTEGER"/>
+            <result column="strafficSalary" property="trafficSalary" jdbcType="INTEGER"/>
+            <result column="sallSalary" property="allSalary" jdbcType="INTEGER"/>
+            <result column="spensionBase" property="pensionBase" jdbcType="INTEGER"/>
+            <result column="spensionPer" property="pensionPer" jdbcType="REAL"/>
+            <result column="screateDate" property="createDate" jdbcType="TIMESTAMP"/>
+            <result column="smedicalBase" property="medicalBase" jdbcType="INTEGER"/>
+            <result column="smedicalPer" property="medicalPer" jdbcType="REAL"/>
+            <result column="saccumulationFundBase" property="accumulationFundBase" jdbcType="INTEGER"/>
+            <result column="saccumulationFundPer" property="accumulationFundPer" jdbcType="REAL"/>
+            <result column="sname" property="name" jdbcType="VARCHAR"/>
+        </association>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, eid, sid
+        id, eid, sid,baseSalary
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
@@ -26,8 +51,9 @@
     </delete>
 
     <insert id="insert" parameterType="com.bin.bole.domain.emp.EmpSalary">
-        insert into empsalary (id, eid, sid)
-        values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER})
+        insert into empsalary (id, eid, sid, baseSalary)
+        values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER},
+                #{sid,jdbcType=INTEGER}, #{baseSalary,jdbcType=INTEGER})
     </insert>
 
     <insert id="insertSelective" parameterType="com.bin.bole.domain.emp.EmpSalary">
@@ -42,6 +68,9 @@
             <if test="sid != null">
                 sid,
             </if>
+            <if test="baseSalary != null">
+                baseSalary,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -52,6 +81,9 @@
             </if>
             <if test="sid != null">
                 #{sid,jdbcType=INTEGER},
+            </if>
+            <if test="baseSalary != null">
+                #{baseSalary,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>
@@ -65,14 +97,97 @@
             <if test="sid != null">
                 sid = #{sid,jdbcType=INTEGER},
             </if>
+            <if test="baseSalary != null">
+                baseSalary = #{baseSalary,jdbcType=INTEGER},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-  
+
     <update id="updateByPrimaryKey" parameterType="com.bin.bole.domain.emp.EmpSalary">
         update empsalary
-        set eid = #{eid,jdbcType=INTEGER},
-            sid = #{sid,jdbcType=INTEGER}
+        set eid       = #{eid,jdbcType=INTEGER},
+            sid       = #{sid,jdbcType=INTEGER},
+            baseSalary=#{baseSalary,jdbcType=INTEGER}
         where id = #{id,jdbcType=INTEGER}
     </update>
+
+    <update id="updateBaseSalByEId" parameterType="integer">
+        update empsalary
+        set baseSalary=#{baseSalary,jdbcType=INTEGER}
+        where eid = #{eid,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectByWorkId" resultMap="ResultMap2">
+        select es.eid,
+               e.workID,
+               e.gender,
+               e.name,
+               es.baseSalary,
+               s.`id`                   AS sid,
+               s.`accumulationFundBase` AS
+                                           saccumulationFundBase,
+               s.`accumulationFundPer`  AS saccumulationFundPer,
+               s.`allSalary`            AS
+                                           sallSalary,
+               s.`basicSalary`          AS sbasicSalary,
+               s.`bonus`                AS sbonus,
+               s.`createDate`           AS screateDate,
+               s.`lunchSalary`          AS
+                                           slunchSalary,
+               s.`medicalBase`          AS smedicalBase,
+               s.`medicalPer`           AS smedicalPer,
+               s.`name`                 AS sname,
+               s.`pensionBase`          AS
+                                           spensionBase,
+               s.`pensionPer`           AS spensionPer,
+               s.`trafficSalary`        AS strafficSalary
+        from bole.employee e,
+             bole.empsalary es,
+             bole.salary s
+        where e.id = es.eid
+          and es.sid = s.id
+          and e.workID = #{workId}
+    </select>
+
+    <select id="getAllSalariesByPage" resultMap="ResultMap2">
+        select es.eid,
+               e.workID,
+               e.gender,
+               e.name,
+               es.baseSalary,
+               s.`id`                   AS sid,
+               s.`accumulationFundBase` AS
+                                           saccumulationFundBase,
+               s.`accumulationFundPer`  AS saccumulationFundPer,
+               s.`allSalary`            AS
+                                           sallSalary,
+               s.`basicSalary`          AS sbasicSalary,
+               s.`bonus`                AS sbonus,
+               s.`createDate`           AS screateDate,
+               s.`lunchSalary`          AS
+                                           slunchSalary,
+               s.`medicalBase`          AS smedicalBase,
+               s.`medicalPer`           AS smedicalPer,
+               s.`name`                 AS sname,
+               s.`pensionBase`          AS
+                                           spensionBase,
+               s.`pensionPer`           AS spensionPer,
+               s.`trafficSalary`        AS strafficSalary
+        from bole.employee e,
+             bole.empsalary es,
+             bole.salary s
+        where e.id = es.eid
+          and es.sid = s.id
+        limit #{page},#{size}
+    </select>
+
+    <select id="getTotal" resultType="java.lang.Long">
+        select count(*)
+        from bole.employee e,
+             bole.empsalary es,
+             bole.salary s
+        where e.id = es.eid
+          and es.sid = s.id
+    </select>
 </mapper>
