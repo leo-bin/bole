@@ -6,9 +6,8 @@ spring:
     host: smtp.163.com
     protocol: smtp
     default-encoding: UTF-8
-    password: 
-    username: leo_bins@163.com
-    port: 587
+    password: MORCWFYULHUZJMOT
+    username: dadaglobal@163.com
     properties:
       mail:
         stmp:
