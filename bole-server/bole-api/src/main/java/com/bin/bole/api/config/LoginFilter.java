@@ -60,9 +60,6 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
             Hr principal = new Hr();
             principal.setUsername(username);
             sessionRegistry.registerNewSession(request.getSession(true).getId(), principal);
-            sessionRegistry.getAllSessions(principal, true).forEach(sessionInformation ->
-                    log.info("sessionID={},isExpired={}", sessionInformation.getSessionId(), sessionInformation.isExpired())
-            );
             return this.getAuthenticationManager().authenticate(authRequest);
         } else {
             checkCode(response, request.getParameter("status"), verifyCode);
